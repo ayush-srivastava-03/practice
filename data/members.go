@@ -7,5 +7,5 @@ import (
 // MembersList array
 var MembersList []proto.MemberDetails
 
-// NetworksMap map
+// NetworksMap as map
 var NetworksMap = make(map[int64][]int64)
