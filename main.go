@@ -153,7 +153,7 @@ func main() {
 	/*
 		Register your service implementation here, like so:
 
-		RegisterViewNetworkServiceServer(grpcServer, --your server implementation here--)
+		RegisterViewNetworkServiceServer(grpcServer, --your server implementation here-- )
 	*/
 
 	RegisterViewNetworkServiceServer(grpcServer, &server{})
