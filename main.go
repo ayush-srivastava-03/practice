@@ -151,9 +151,9 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	/*
-		Register your service implimentation here, like so:
+		Register your service implementation here, like so:
 
-		RegisterViewNetworkServiceServer(grpcServer, --your server implimentation here--)
+		RegisterViewNetworkServiceServer(grpcServer, --your server implementation here--)
 	*/
 
 	RegisterViewNetworkServiceServer(grpcServer, &server{})
@@ -237,11 +237,11 @@ func (s *server) GetNetworkMembers(ctx context.Context, nKey *NetworkKey) (*User
 		return nil, errors.New("No such network key found")
 	}
 
-	var keys_list []int64 = networksMap[nKey.Key]
+	var keysList []int64 = networksMap[nKey.Key]
 
 	var userKeysAdded []*UserKey
 
-	for _, v := range keys_list {
+	for _, v := range keysList {
 		userKeysAdded = append(userKeysAdded, &UserKey{Key: v})
 	}
 

@@ -17,14 +17,13 @@ func main() {
 
 	client := NewViewNetworkServiceClient(conn)
 
-
 	req := &UserViewingNetwork{
-		User: 		&UserKey{
-						Key:	1,
-					},	
-		Network: 	&NetworkKey{
-						Key:	1000,
-					},
+		User: &UserKey{
+			Key: 1,
+		},
+		Network: &NetworkKey{
+			Key: 1000,
+		},
 	}
 
 	if response, err := client.ViewNetworkMembers(context.Background(), req); err == nil {
@@ -37,15 +36,13 @@ func main() {
 		log.Printf("Error: %v", err.Error())
 	}
 
-
-
 	fmt.Println()
 
 	networkClient := NewNetworkServiceClient(conn)
 
 	req2 := &NetworkKey{
-				Key:	1000,
-			}
+		Key: 1000,
+	}
 
 	if response, err := networkClient.GetNetworkMembers(context.Background(), req2); err == nil {
 		fmt.Printf("Members in the network key %v are: ", req2.Key)
@@ -57,15 +54,13 @@ func main() {
 		log.Printf("Error: %v", err.Error())
 	}
 
-
-
 	fmt.Println()
 
 	userClient := NewUserServiceClient(conn)
 
 	req3 := &UserKey{
-				Key:	2,
-			}
+		Key: 2,
+	}
 
 	if response, err := userClient.GetUser(context.Background(), req3); err == nil {
 		fmt.Printf("User found with key %v---> Key: %v Name: %v\n", response.Key, response.Key, response.Name)
@@ -73,27 +68,24 @@ func main() {
 		log.Printf("Error: %v", err.Error())
 	}
 
-
-
 	fmt.Println()
 
 	interestsClient := NewInterestsServiceClient(conn)
 
 	req4 := &TwoUserKeys{
-				User1:	&UserKey{
-							Key:	2,
-						},
-				User2:	&UserKey{
-							Key:	3,
-						},
-			}
+		User1: &UserKey{
+			Key: 2,
+		},
+		User2: &UserKey{
+			Key: 3,
+		},
+	}
 
 	if response, err := interestsClient.GetSharedInterests(context.Background(), req4); err == nil {
 		fmt.Printf("Common Interests between the users with keys %v and %v are: %v\n", req4.User1.Key, req4.User2.Key, response.Interests)
 	} else {
 		log.Printf("Error: %v", err.Error())
 	}
-
 
 	fmt.Println()
 
@@ -103,7 +95,6 @@ func main() {
 		fmt.Printf("Common Contacts between the users with keys %v and %v are: %v\n", req4.User1.Key, req4.User2.Key, response.Contacts)
 	} else {
 		log.Printf("Error: %v", err.Error())
-	}	
-
+	}
 
 }
