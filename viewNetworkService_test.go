@@ -9,7 +9,7 @@ import (
 )
 
 func TestViewNetworkService(t *testing.T) {
-	s := &view.ViewNetworkServer{}
+	s := &view.Server{}
 	// Request object
 	req := &proto.UserViewingNetwork{
 		User: &proto.UserKey{

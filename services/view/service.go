@@ -12,16 +12,16 @@ import (
 	"interview/services/users"
 )
 
-// ViewNetworkServer structure
-type ViewNetworkServer struct{}
+// Server structure
+type Server struct{}
 
 // ViewNetworkMembers function
-func (s *ViewNetworkServer) ViewNetworkMembers(ctx context.Context, req *proto.UserViewingNetwork) (*proto.NetworkMembersView, error) {
+func (s *Server) ViewNetworkMembers(ctx context.Context, req *proto.UserViewingNetwork) (*proto.NetworkMembersView, error) {
 
-	networkServer := &network.NetworkServer{}
-	usersServer := &users.UsersServer{}
-	contactsServer := &contacts.ContactsServer{}
-	interestsServer := &interests.InterestsServer{}
+	networkServer := &network.Server{}
+	usersServer := &users.Server{}
+	contactsServer := &contacts.Server{}
+	interestsServer := &interests.Server{}
 
 	// Get the user key from the user viewing network
 	var uKey *proto.UserKey = req.GetUser()

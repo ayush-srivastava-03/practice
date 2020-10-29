@@ -8,11 +8,11 @@ import (
 	"interview/proto"
 )
 
-// ContactsServer structure
-type ContactsServer struct{}
+// Server structure
+type Server struct{}
 
 // GetCommonContacts function
-func (s *ContactsServer) GetCommonContacts(ctx context.Context, twoKeys *proto.TwoUserKeys) (*proto.Contacts, error) {
+func (s *Server) GetCommonContacts(ctx context.Context, twoKeys *proto.TwoUserKeys) (*proto.Contacts, error) {
 
 	// Search for the two user keys in the member details
 	foundCounter := 0

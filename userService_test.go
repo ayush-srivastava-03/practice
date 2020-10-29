@@ -9,7 +9,7 @@ import (
 )
 
 func TestUserService(t *testing.T) {
-	s := &users.UsersServer{}
+	s := &users.Server{}
 	// Request object
 	req := &proto.UserKey{
 		Key: 2,

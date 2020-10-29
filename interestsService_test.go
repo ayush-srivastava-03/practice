@@ -9,7 +9,7 @@ import (
 )
 
 func TestCommonInterestService(t *testing.T) {
-	s := &interests.InterestsServer{}
+	s := &interests.Server{}
 	// Request object
 	req := &proto.TwoUserKeys{
 		User1: &proto.UserKey{

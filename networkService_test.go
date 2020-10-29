@@ -9,7 +9,7 @@ import (
 )
 
 func TestNetworkService(t *testing.T) {
-	s := &network.NetworkServer{}
+	s := &network.Server{}
 	// Request object
 	req := &proto.NetworkKey{
 		Key: 1000,

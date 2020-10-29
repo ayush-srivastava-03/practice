@@ -10,7 +10,7 @@ import (
 
 func TestContactService(t *testing.T) {
 	//
-	s := &contacts.ContactsServer{}
+	s := &contacts.Server{}
 	// Request object
 	req := &proto.TwoUserKeys{
 		User1: &proto.UserKey{

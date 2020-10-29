@@ -138,11 +138,11 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	// Registering of all the services
-	proto.RegisterViewNetworkServiceServer(grpcServer, &view.ViewNetworkServer{})
-	proto.RegisterNetworkServiceServer(grpcServer, &network.NetworkServer{})
-	proto.RegisterUserServiceServer(grpcServer, &users.UsersServer{})
-	proto.RegisterInterestsServiceServer(grpcServer, &interests.InterestsServer{})
-	proto.RegisterContactServiceServer(grpcServer, &contacts.ContactsServer{})
+	proto.RegisterViewNetworkServiceServer(grpcServer, &view.Server{})
+	proto.RegisterNetworkServiceServer(grpcServer, &network.Server{})
+	proto.RegisterUserServiceServer(grpcServer, &users.Server{})
+	proto.RegisterInterestsServiceServer(grpcServer, &interests.Server{})
+	proto.RegisterContactServiceServer(grpcServer, &contacts.Server{})
 
 	err = grpcServer.Serve(lis)
 	if err != nil {

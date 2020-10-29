@@ -8,11 +8,11 @@ import (
 	"interview/proto"
 )
 
-// InterestsServer structure
-type InterestsServer struct{}
+// Server structure
+type Server struct{}
 
 // GetSharedInterests function
-func (s *InterestsServer) GetSharedInterests(ctx context.Context, twoKeys *proto.TwoUserKeys) (*proto.Interests, error) {
+func (s *Server) GetSharedInterests(ctx context.Context, twoKeys *proto.TwoUserKeys) (*proto.Interests, error) {
 
 	// Search for the two user keys in the member details
 	foundCounter := 0

@@ -27,11 +27,11 @@ var lis *bufconn.Listener
 func init() {
 	lis = bufconn.Listen(bufSize)
 	grpcServer := grpc.NewServer()
-	proto.RegisterViewNetworkServiceServer(grpcServer, &view.ViewNetworkServer{})
-	proto.RegisterNetworkServiceServer(grpcServer, &network.NetworkServer{})
-	proto.RegisterUserServiceServer(grpcServer, &users.UsersServer{})
-	proto.RegisterInterestsServiceServer(grpcServer, &interests.InterestsServer{})
-	proto.RegisterContactServiceServer(grpcServer, &contacts.ContactsServer{})
+	proto.RegisterViewNetworkServiceServer(grpcServer, &view.Server{})
+	proto.RegisterNetworkServiceServer(grpcServer, &network.Server{})
+	proto.RegisterUserServiceServer(grpcServer, &users.Server{})
+	proto.RegisterInterestsServiceServer(grpcServer, &interests.Server{})
+	proto.RegisterContactServiceServer(grpcServer, &contacts.Server{})
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil {
 			log.Fatalf("Server exited with error: %v", err)
