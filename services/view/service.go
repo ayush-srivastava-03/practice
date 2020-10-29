@@ -12,9 +12,11 @@ import (
 	"interview/services/users"
 )
 
+// ViewNetworkServer structure
 type ViewNetworkServer struct{}
 
-func (s *ViewNetworkServer)ViewNetworkMembers(ctx context.Context, req *proto.UserViewingNetwork) (*proto.NetworkMembersView, error) {
+// ViewNetworkMembers function
+func (s *ViewNetworkServer) ViewNetworkMembers(ctx context.Context, req *proto.UserViewingNetwork) (*proto.NetworkMembersView, error) {
 
 	networkServer := &network.NetworkServer{}
 	usersServer := &users.UsersServer{}
@@ -33,12 +35,10 @@ func (s *ViewNetworkServer)ViewNetworkMembers(ctx context.Context, req *proto.Us
 		return nil, errors.New("Network Key is null")
 	}
 
-
 	uKeysInNetwork, err := networkServer.GetNetworkMembers(ctx, nKey)
 	if err != nil {
 		return nil, err
 	}
-
 
 	var memberDetailsAdded []*proto.MemberDetails
 
@@ -54,12 +54,12 @@ func (s *ViewNetworkServer)ViewNetworkMembers(ctx context.Context, req *proto.Us
 		}
 
 		twoKeys := &proto.TwoUserKeys{
-			User1:	&proto.UserKey{
-						Key:	uKey.Key,
-					},
-			User2:	&proto.UserKey{
-						Key:	v.Key,
-					},
+			User1: &proto.UserKey{
+				Key: uKey.Key,
+			},
+			User2: &proto.UserKey{
+				Key: v.Key,
+			},
 		}
 
 		commonContacts, err := contactsServer.GetCommonContacts(ctx, twoKeys)
@@ -73,10 +73,10 @@ func (s *ViewNetworkServer)ViewNetworkMembers(ctx context.Context, req *proto.Us
 		}
 
 		memberDetailsAdded = append(memberDetailsAdded, &proto.MemberDetails{
-															User:				userFromUserKey,
-															CommonContacts:		commonContacts,
-															CommonInterests:	sharedInterests,
-														})
+			User:            userFromUserKey,
+			CommonContacts:  commonContacts,
+			CommonInterests: sharedInterests,
+		})
 
 	}
 

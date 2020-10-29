@@ -8,10 +8,12 @@ import (
 	"interview/proto"
 )
 
+// UsersServer structure
 type UsersServer struct{}
 
-func (s *UsersServer)GetUser(ctx context.Context, uKey *proto.UserKey) (*proto.User, error) {
-	
+// GetUser function
+func (s *UsersServer) GetUser(ctx context.Context, uKey *proto.UserKey) (*proto.User, error) {
+
 	// Search for a user from the member details who has the same user key
 	// as the user key obtained from the request
 	found := false

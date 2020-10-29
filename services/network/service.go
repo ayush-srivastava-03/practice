@@ -8,9 +8,11 @@ import (
 	"interview/proto"
 )
 
+// NetworkServer structure
 type NetworkServer struct{}
 
-func (s *NetworkServer)GetNetworkMembers(ctx context.Context, nKey *proto.NetworkKey) (*proto.UserKeys, error) {
+// GetNetworkMembers function
+func (s *NetworkServer) GetNetworkMembers(ctx context.Context, nKey *proto.NetworkKey) (*proto.UserKeys, error) {
 	if _, ok := data.NetworksMap[nKey.Key]; !ok {
 		return nil, errors.New("No such network key found")
 	}
@@ -19,8 +21,8 @@ func (s *NetworkServer)GetNetworkMembers(ctx context.Context, nKey *proto.Networ
 
 	var userKeysAdded []*proto.UserKey
 
-	for _,v := range keysList {
-		userKeysAdded = append(userKeysAdded, &proto.UserKey{Key:	v,})
+	for _, v := range keysList {
+		userKeysAdded = append(userKeysAdded, &proto.UserKey{Key: v})
 	}
 
 	return &proto.UserKeys{Users: userKeysAdded}, nil
